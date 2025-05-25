@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Travels - Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/viva_travels_logo.svg" alt="Viva Travels Logo" width="50" height="50">
+            </a>
+            <nav>
+                <ul>
+                     <li><a href="index.html">Home</a></li>
+                    <li><a href="bookingform.html">Booking</a></li>
+                    <li><a href="packages.html">Travel Packages</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <img src="images/booking_hero.jpg" alt="African Landscape Banner" width="1200" height="400">
+    </section>
+
+  <section class="container intro">
+        <h2>Embark on Your Unforgettable African Adventure</h2>
+        <p>With Viva Travels, your dream trip to Africa is just a booking away, made effortless with our innovative no-upfront-payment system designed to remove financial barriers and provide ultimate flexibility. Whether you’re yearning to witness the majestic wildlife of the Serengeti, feel the exhilarating rush of Victoria Falls, or immerse yourself in the vibrant cultural tapestry of Cape Town, our expertly curated packages cater to every traveler’s desires. Start planning your extraordinary journey today and experience the wonders of Africa with the confidence of seamless, stress-free travel arrangements tailored to create lifelong memories.</p>
+    </section>
+
+   <section class="container booking-form">
+    <h2 class="text-center mb-4">Booking Form</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="bookingForm" action="#" method="POST" onsubmit="return validateForm()">
+                <label for="package">Select Package:</label>
+                <select id="package" name="package" required>
+                    <option value="" disabled selected>Choose a package</option>
+                    <option value="serengeti">Serengeti Safari Adventure</option>
+                    <option value="victoria-falls">Victoria Falls Thrill & Tranquility</option>
+                    <option value="cape-town">Cape Town City & Nature Escape</option>
+                </select>
+                <span id="packageError" style="color: red;"></span>
+
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                <span id="nameError" style="color: red;"></span>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                <span id="emailError" style="color: red;"></span>
+
+                <label for="phone">Phone Number (Optional):</label>
+                <input type="tel" id="phone" name="phone" placeholder="(e.g., +267 77777777)">
+
+                <label for="travel-date">Preferred Travel Date:</label>
+                <input type="date" id="travel-date" name="travel-date" required>
+                <span id="travelDateError" style="color: red;"></span>
+
+                <label for="travelers">Number of Travelers:</label>
+                <input type="number" id="travelers" name="travelers" min="1" required>
+                <span id="travelersError" style="color: red;"></span>
+
+                <label for="requests">Special Requests:</label>
+                <textarea id="requests" name="requests" rows="5" placeholder="Your special requests..."></textarea>
+
+                <button type="submit">Submit Booking</button>
+            </form>
+			<script>
+  function validateForm() {
+    let isValid = true;
+
+    // Get form inputs
+    let package = document.getElementById("package").value.trim();
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let travelDate = document.getElementById("travel-date").value.trim();
+    let travelers = document.getElementById("travelers").value.trim();
+
+    // Get Error Elements
+    let packageError = document.getElementById("packageError");
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let travelDateError = document.getElementById("travelDateError");
+    let travelersError = document.getElementById("travelersError");
+
+    // Reset Error Messages
+    packageError.textContent = "";
+    nameError.textContent = "";
+    emailError.textContent = "";
+    travelDateError.textContent = "";
+    travelersError.textContent = "";
+
+    // Validate Package Selection
+    if (package === "" || package === null) {
+      packageError.textContent = "Please select a package.";
+      isValid = false;
+    }
+
+    // Validate Name (Minimum 3 Characters)
+    if (name.length < 3) {
+      nameError.textContent = "Name must be at least 3 characters long.";
+      isValid = false;
+    }
+
+    // Validate Email Basic Pattern Check
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Enter a valid email address.";
+      isValid = false;
+    }
+
+    // Validate Travel Date (Must be in the future)
+    let today = new Date();
+    let selectedDate = new Date(travelDate);
+    if (!travelDate || selectedDate <= today) {
+      travelDateError.textContent = "Please select a future travel date.";
+      isValid = false;
+    }
+
+    // Validate Number of Travelers (Minimum 1)
+    if (travelers < 1) {
+      travelersError.textContent = "Number of travelers must be at least 1.";
+      isValid = false;
+    }
+
+    // If valid, show success message and reset form
+    if (isValid) {
+      alert('Booking submitted successfully! We’ll confirm via email within 24 hours.');
+      document.getElementById('bookingForm').reset();
+    }
+
+    return isValid;
+  }
+</script>
+        </div>
+    </div>
+</section>
+
+   <section class="container about">
+        <h2>Booking Confirmation</h2>
+        <p>We’re thrilled that you’ve chosen Viva Travels for your African adventure! Thank you for entrusting us with your journey. Our team is diligently processing your booking request, and you can expect a detailed confirmation email within the next 24 hours, complete with all the essential information about your upcoming trip. Should you have any questions or need further assistance in the meantime, our dedicated support team is here to ensure your planning experience is smooth, exciting, and tailored to create unforgettable memories in Africa.</p>
+    </section>
+
+    <footer>
+        <p>Contact us at <a href="mailto:info@vivatravels.com">info@vivatravels.com</a> | Phone: +267-123-4567</p>
+        <p>© 2025 Viva Travels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

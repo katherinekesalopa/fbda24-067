@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Travels | Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/viva_travels_logo.svg" alt="Viva Travels Logo" width="50" height="50">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="bookingform.html">Booking</a></li>
+                    <li><a href="packages.html">Travel Packages</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <img src="images/contact_us_hero.jpg" alt="African Landscape Banner" width="1200" height="400">
+    </section>
+
+    <section class="container intro">
+        <h2>Share Your Feedback</h2>
+		<p>We deeply value your thoughts and perspectives! Whether you’ve already embarked on an incredible journey with Viva Travels or are in the exciting stages of planning your next adventure, your feedback is essential to us. By sharing your experiences, insights, or suggestions through the form below, you help us enhance our services and create even more unforgettable travel moments for you and future explorers.</p>
+    </section>
+
+    <section class="container contact-form">
+        <h2>Submit Your Feedback</h2>
+        <form action="/submit-feedback" method="POST" onsubmit="return validateContactForm()">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+            <span id="nameError" style="color: red;"></span>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+            <span id="emailError" style="color: red;"></span>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="(e.g., +267 77777777)" required>
+            <span id="phoneError" style="color: red;"></span>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Feedback Topic" required>
+            <span id="subjectError" style="color: red;"></span>
+
+            <label for="message">Your Feedback:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Share your experience or suggestions..." required></textarea>
+            <span id="messageError" style="color: red;"></span>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <script>
+  function validateContactForm() {
+    let isValid = true;
+
+    // Get form inputs
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    // Get Error Elements
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let phoneError = document.getElementById("phoneError");
+    let subjectError = document.getElementById("subjectError");
+    let messageError = document.getElementById("messageError");
+
+    // Reset Error Messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    subjectError.textContent = "";
+    messageError.textContent = "";
+
+    // Validate Name (Minimum 3 Characters)
+    if (name.length < 3) {
+      nameError.textContent = "Name must be at least 3 characters long.";
+      isValid = false;
+    }
+
+    // Validate Email Basic Pattern Check
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Enter a valid email address.";
+      isValid = false;
+    }
+
+    // Validate Phone (Basic pattern for international format, e.g., +267 12345678)
+    let phonePattern = /^\+?[1-9]\d{1,14}$/;
+    if (!phonePattern.test(phone)) {
+      phoneError.textContent = "Enter a valid phone number (e.g., +267 12345678).";
+      isValid = false;
+    }
+
+    // Validate Subject (Minimum 5 Characters)
+    if (subject.length < 5) {
+      subjectError.textContent = "Subject must be at least 5 characters long.";
+      isValid = false;
+    }
+
+    // Validate Message (Minimum 10 Characters)
+    if (message.length < 10) {
+      messageError.textContent = "Message must be at least 10 characters long.";
+      isValid = false;
+    }
+
+    // If valid, show success message and reset form
+    if (isValid) {
+      alert('Thank you for your feedback! We’ll review it and get back to you if needed within 24 hours.');
+      document.querySelector('.contact-form form').reset();
+    }
+
+    return isValid;
+  }
+</script>
+    </section>
+
+    <section class="container contact-info">
+        <h2>Why Your Feedback Matters</h2>
+		<p>Your insights are invaluable in helping us refine and elevate our services to better align with your unique travel aspirations. At Viva Travels, we cherish every comment, suggestion, or personal story you share about your unforgettable journey with us, as it allows us to craft even more exceptional and tailored experiences for you and fellow travelers.</p>
+        <p><strong>Email:</strong> <a href="mailto:feedback@vivatravels.com">feedback@vivatravels.com</a></p>
+        <p><strong>Phone:</strong> +267-123-4567</p>
+    </section>
+
+    <footer>
+        <p>Contact us at <a href="mailto:info@vivatravels.com">info@vivatravels.com</a> | Phone: +267-123-4567</p>
+        <p>© 2025 Viva Travels. All rights reserved.</p>
+    </footer>
+</body>
+</html>
