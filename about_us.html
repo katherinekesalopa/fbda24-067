@@ -13,6 +13,7 @@
             <a href="index.html" class="logo">
                 <img src="images/viva_travels_logo.svg" alt="Viva Travels Logo" width="50" height="50">
             </a>
+			<button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -86,5 +87,15 @@
         <p>Contact us at <a href="mailto:info@vivatravels.com">info@vivatravels.com</a> | Phone: +267-123-4567</p>
         <p>© 2025 Viva Travels. All rights reserved.</p>
     </footer>
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu ul');
+
+        toggleButton.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    });
+</script>
 </body>
 </html>
